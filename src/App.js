@@ -1,3 +1,4 @@
+import { element } from "prop-types";
 import { useState, useEffect } from "react";
 
 function App() {
@@ -10,8 +11,8 @@ function App() {
     if (toDo === "") {
       return;
     }
+    setToDos((currnetArray) => [...currnetArray, toDo]);
     setToDo("");
-    setToDos((currnetArray) => [toDo, ...currnetArray]);
   };
 
   return (
@@ -26,6 +27,10 @@ function App() {
         />
         <button>Add To Do</button>
       </form>
+      <hr />
+      {toDos.map((item, index) => (
+        <li key={index}>{item}</li>
+      ))}
     </div>
   );
 }
